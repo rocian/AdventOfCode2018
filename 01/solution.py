@@ -85,37 +85,61 @@ from sys import stdin
 
 
 def read_input():
-    intlist = [int(i) for i in stdin.read().split()]
-    return intlist 
+    # the input is a list of integer separated by LF
+    # transofrm in a list of int
+    ilist = [int(i) for i in stdin.read().split()]
+    return ilist
 
 
 def part_one(ilist):
+    # the requested total shift is simply the sum of all single shift
     return sum(ilist)
 
 
 def part_two(ilist):
-    isum = 0
-    reached = dict()
+    # Bonus count howmany loop do we need tho have a repetition
+    # of a frequency
+
+    howmanyloop = 1
+    frequency = 0
+
+    # create a dict of the reached frequency
+    freached = dict()
+
+    # iterate through the list (forever) and ...
     while True:
         for i in range(len(ilist)):
-            isum += ilist[i]
-            if isum in reached.keys():
-                return isum
-            reached[isum] = 1
+            frequency += ilist[i]
+            if frequency in freached.keys():
+                # return the first frequency already reached, the number of
+                # loop needed and the lenght of the reached frequency dictionary
+                return frequency, howmanyloop, len(freached)
+
+            freached[frequency] = 1
+
+        howmanyloop += 1
+
+    # we will never reach this ...
     return None
 
 
-hilist = read_input()
-isum = part_one(hilist)
-jsum = part_two(hilist)
+integerlist = read_input()
+frequency = part_one(integerlist)
+returned, numloop, lenfreqdict = part_two(integerlist)
 
-print("Solution of part 1: {}".format(isum))
-print("Solution of part 2: {}".format(jsum))
+print("\n--- Day 01 ---")
+print("part 1: final frequency {}".format(frequency))
+print("""part 2: first repeated frequency {},
+        obtained in {} loops,
+        with a total {} frequencies reached.""".format(returned,
+                                                       numloop,
+                                                       lenfreqdict))
+print("--------------\n")
 
 # Solution of part 1: 576
 # Solution of part 2: 77674
 # 0 19:17
-# 1 19:33 
+# 1 19:33
 # 2 19:40
 # position
 # 1  13141  4173
