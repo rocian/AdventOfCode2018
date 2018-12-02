@@ -103,7 +103,7 @@ def part_two(ilist):
     howmanyloop = 1
     frequency = 0
 
-    # create a dict of the reached frequency
+    # create a dict of the reached frequencies
     freached = dict()
 
     # iterate through the list (forever) and ...
@@ -128,18 +128,21 @@ frequency = part_one(integerlist)
 returned, numloop, lenfreqdict = part_two(integerlist)
 
 print("\n--- Day 01 ---")
-print("part 1: final frequency {}".format(frequency))
-print("""part 2: first repeated frequency {},
+print("part 1: final frequency = {}".format(frequency))
+print("""part 2: first repeated frequency = {},
         obtained in {} loops,
         with a total {} frequencies reached.""".format(returned,
                                                        numloop,
                                                        lenfreqdict))
 print("--------------\n")
 
-# Solution of part 1: 576
-# Solution of part 2: 77674
-# 0 19:17
-# 1 19:33
-# 2 19:40
-# position
-# 1  13141  4173
+# --- Day 01 ---
+# part 1: final frequency = 576
+# part 2: first repeated frequency = 77674,
+#         obtained in 136 loops,
+#         with a total 133164 frequencies reached.
+# --------------
+# 0 19:17 Sat Dec  1 19:17 CET 2018
+# 1 19:33 Sat Dec  1 19:33 CET 2018
+# 2 19:40 Sat Dec  1 19:40 CET 2018
+# position  13141  4173
