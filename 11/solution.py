@@ -113,7 +113,7 @@ def part_one(mpw):
     size = 3
     for x in range(1, 300 + 2 - size):
         for y in range(1, 300 + 2 - size):
-            pw = np.sum(mpw[x:x + size, y:y + size])
+            pw = mpw[x:x + size, y:y + size].sum()
             if pw > maxpw:
                 maxpw = pw
                 X = x
@@ -129,10 +129,10 @@ def part_two(mpw):
     maxpw = -np.Inf
 
     for size in range(1, 301):
-        print(size)
+        # print(size)
         for x in range(1, 300 + 2 - size):
             for y in range(1, 300 + 2 - size):
-                pw = np.sum(mpw[x:x + size, y:y + size])
+                pw = mpw[x:x + size, y:y + size].sum()
                 if pw > maxpw:
                     maxpw = pw
                     X = x
