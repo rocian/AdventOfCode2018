@@ -67,7 +67,7 @@
 # So, in this example, the correct order is CABDFE.
 # In what order should the steps in your instructions be completed?
 
-#--- Part Two ---
+# --- Part Two ---
 
 # As you're about to begin construction, four of the Elves offer to help. "The
 # sun will set soon; it'll go faster if we work together." Now, you need to
@@ -84,9 +84,9 @@
 # instructions as above, this is how each second would be spent:
 
 # Second   Worker 1   Worker 2   Done
-#    0        C          .        
-#    1        C          .        
-#    2        C          .        
+#    0        C          .
+#    1        C          .
+#    2        C          .
 #    3        A          F       C
 #    4        B          F       CA
 #    5        B          F       CA
@@ -131,12 +131,11 @@ def read_input():
 
 def c2mat(couples):
     # create chain matrix
-    # and order of execution 
-    allq = set()    
+    # and order of execution
+    allq = set()
     for a, b in couples:
         allq.add(a)
         allq.add(b)
-        
 
     order = list(allq)
     order.sort()
@@ -166,7 +165,7 @@ def part_one(mat, order):
                 mat[i, :] = 0
                 solution.append(order[i])
                 break
-                
+
     return ''.join(solution)
 
 
@@ -180,12 +179,12 @@ def part_two(mat, order, nw, bigst):
     done = set()             # done items
     started = set()          # items started
     solution = []            # chain solution
-    
+
     # set time
     seconds = 0
-    
+
     while len(done) < len(order):
-        
+
         # free workers: if time (w[t]) is equal seconds,
         #               and time is greater than 0
         #               worker has terminated its job
@@ -225,7 +224,7 @@ def part_two(mat, order, nw, bigst):
                 row.append('.')
             else:
                 row.append(order[w['w']])
-                
+
         print(seconds, '\t'.join(row))
 
         # increase time
@@ -234,10 +233,11 @@ def part_two(mat, order, nw, bigst):
     print('solution:' + ''.join(solution))
     return seconds - 1
 
+
 chain = read_input()
 mat, order = c2mat(chain)
 part1 = part_one(mat, order)
-# mat is changed, so 
+# mat is changed, so
 # recreate mat and order
 mat, order = c2mat(chain)
 part2 = part_two(mat, order, 5, 60)
